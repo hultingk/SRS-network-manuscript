@@ -2,11 +2,10 @@
 #### Diversity metrics excluding Apis ####
 # Author: XXXX
 # -------------------------------------- #
-# end result - summerized dataframe ready for analysis
 
 
 # loading libraries
-librarian::shelf(tidyverse, vegan, glmmTMB, iNEXT)
+librarian::shelf(tidyverse, vegan, glmmTMB, iNEXT, DHARMa)
 
 # loading data 
 pollinator <- read.csv(file = file.path("data", "L1_data", "SRS-plant-pollinator.csv")) # plant-pollinator interaction data
@@ -164,9 +163,9 @@ si_noApis_diversity_plot <- cowplot::plot_grid(floral_1_noApis.pred, pollinator_
                                      labels = c("A)", "B)"), label_size = 26, label_x = 0.25, label_y = 0.95)
 si_noApis_diversity_plot
 
-pdf(file = file.path("plots", "diversity-plots", "si_noApis_diversity_plot.pdf"), width = 13, height = 6)
-si_noApis_diversity_plot
-dev.off()
+# pdf(file = file.path("plots", "diversity-plots", "si_noApis_diversity_plot.pdf"), width = 13, height = 6)
+# si_noApis_diversity_plot
+# dev.off()
 
 
 

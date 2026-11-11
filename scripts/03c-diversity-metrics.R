@@ -117,5 +117,5 @@ diversity_metrics <- abundance %>%
   left_join(pollinator_est, by = c("unique_ID", "block", "patch")) %>%
   left_join(pollinator_noPoe_Apis_est, by = c("unique_ID", "block", "patch"))
  
-write.csv(diversity_metrics, file = file.path("data", "L3_metrics", "diversity_metrics.csv"))
+# write.csv(diversity_metrics, file = file.path("data", "L3_metrics", "diversity_metrics.csv"), row.names = F)
 

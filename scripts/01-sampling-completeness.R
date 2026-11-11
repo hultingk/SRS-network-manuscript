@@ -9,6 +9,7 @@ librarian::shelf(tidyverse, iNEXT, bipartite, kableExtra)
 # loading data 
 pollinator <- read.csv(file = file.path("data", "L1_data", "SRS-plant-pollinator.csv"))
 
+
 # getting plant-pollinator data into correct format for sampling completeness estimation
 sc_pollinator <- pollinator %>%
   mutate(interaction = paste(pollinator_species, flower_species, sep = "-")) %>% # combining pollinator and flower into one column - creating interaction

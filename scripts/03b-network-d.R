@@ -6,7 +6,7 @@
 librarian::shelf(bipartite, tidyverse, glmmTMB, ggeffects)
 
 # load webs
-webs.matrix <- readRDS(file = file.path("data", "webs.matrix.RData"))
+webs.matrix <- readRDS(file = file.path("data", "L2_boot_metrics", "webs.matrix.RData"))
 
 
 ### calculating species level d' ####
@@ -31,14 +31,16 @@ higher_level_d <- net_d.df %>%
   filter(level == "higher.level") %>%
   dplyr::select(-species) %>%
   group_by(unique_ID) %>%
-  summarise(mean_d_higher = mean(d))
+  dplyr::summarize(mean_d_higher = mean(d)) %>%
+  ungroup()
 
 #### higher level d' ####
 lower_level_d <- net_d.df %>%
   filter(level == "lower.level") %>%
   dplyr::select(-species) %>%
   group_by(unique_ID) %>%
-  summarise(mean_d_lower = mean(d))
+  dplyr::summarize(mean_d_lower = mean(d)) %>%
+  ungroup()
 
 # all together
 net_d_mean <- higher_level_d %>%

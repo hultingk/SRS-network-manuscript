@@ -82,8 +82,6 @@ shannon_boot <- shannon_boot %>%
 
 
 
-
-
 #### All together ####
 network_metrics_boot <- nodf_boot %>%
   left_join(h2_boot, by = c("block", "patch")) %>%
@@ -96,5 +94,5 @@ network_metrics_boot <- nodf_boot %>%
   left_join(net_d_mean, by = c("block", "patch"))
 
 
-# write.csv(network_metrics_boot, file = file.path("data", "L2_boot_metrics", "network_metrics_boot.csv"), row.names = FALSE)
+write.csv(network_metrics_boot, file = file.path("data", "L3_metrics", "network_metrics_boot.csv"), row.names = FALSE)
 

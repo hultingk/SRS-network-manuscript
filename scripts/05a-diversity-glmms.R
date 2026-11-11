@@ -22,7 +22,6 @@ anova.abundance <- Anova(m.abundance, type = "III")
 
 
 ##### floral diversity #####
-# actual number of floral species being interacted with isn't difference between patch types, but the diversity weighted by abundance is
 m.floral_0 <- glmmTMB(floral_0 ~ patch + (1|block), 
                       data = diversity_metrics)
 summary(m.floral_0)
@@ -30,41 +29,32 @@ plot(simulateResiduals(m.floral_0))
 anova.floral_0 <- Anova(m.floral_0, type = "III")
 
 # shannon all species
-m.floral_1 <- glmmTMB(floral_1 ~ patch + (1|block), # significantly lower in unconnected
+m.floral_1 <- glmmTMB(floral_1 ~ patch + (1|block), 
                       data = diversity_metrics)
 summary(m.floral_1)
 plot(simulateResiduals(m.floral_1))
 anova.floral_1 <- Anova(m.floral_1, type = "III")
--4.996/12.912 * 100 # 38.69269% decrease
 confint(m.floral_1)
--8.0244889/10.5485844 * 100 # -76.07171% decrease
--1.967074/15.275605 * 100 # -12.87722% decrease
 
 
 
 ##### pollinator diversity #####
-m.pollinator_0 <- glmmTMB(pollinator_0 ~ patch + (1|block), # significantly lower in unconnected
+m.pollinator_0 <- glmmTMB(pollinator_0 ~ patch + (1|block),
                           data = diversity_metrics)
 summary(m.pollinator_0)
 plot(simulateResiduals(m.pollinator_0))
 anova.pollinator_0 <- Anova(m.pollinator_0, type = "III")
--9.568/60.931 * 100 # -15.70301 % decrease
 confint(m.pollinator_0)
--18.29667127/54.45729703 * 100 # -33.5982 % decrease
--0.8397631/67.4055508 * 100 # -1.245837 % decrease
+
 
 
 # shannon all species
-m.pollinator_1 <- glmmTMB(pollinator_1 ~ patch + (1|block), # significantly lower in unconnected
+m.pollinator_1 <- glmmTMB(pollinator_1 ~ patch + (1|block),
                       data = diversity_metrics)
 summary(m.pollinator_1)
 plot(simulateResiduals(m.pollinator_1))
 anova.pollinator_1 <- Anova(m.pollinator_1, type = "III")
--13.773/32.729 * 100 # 40.84955% decrease
 confint(m.pollinator_1)
--19.044244/27.671318 * 100 # 68.82305% decrease
--8.50224/37.78661 * 100 # 22.50067% decrease
-
 
 
 
@@ -300,15 +290,15 @@ diversity_plot <- cowplot::plot_grid(floral_0.pred, pollinator_0.pred,floral_1.p
                                      labels = c("A)", "B)", "C)", "D)"), label_size = 26, label_x = 0.19, label_y = 0.95)
 diversity_plot
 
-pdf(file = file.path("plots", "diversity-plots", "diversity_plot.pdf"), width = 13, height = 11)
-diversity_plot
-dev.off()
-
-
-# supplemental plots
-pdf(file = file.path("plots", "diversity-plots", "si_abundance_plot.pdf"), width = 7, height = 6)
-abundance.pred
-dev.off()
+# pdf(file = file.path("plots", "diversity-plots", "diversity_plot.pdf"), width = 13, height = 11)
+# diversity_plot
+# dev.off()
+# 
+# 
+# # supplemental plots
+# pdf(file = file.path("plots", "diversity-plots", "si_abundance_plot.pdf"), width = 7, height = 6)
+# abundance.pred
+# dev.off()
 
 
 

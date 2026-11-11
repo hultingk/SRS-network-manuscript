@@ -7,7 +7,7 @@
 librarian::shelf(glmmTMB, DHARMa, tidyverse, ggeffects, car, kableExtra)
 
 # loading data
-network_metrics_boot <- read.csv(file = file.path("data", "L2_boot_metrics", "network_metrics_boot.csv"))
+network_metrics_boot <- read.csv(file = file.path("data", "L3_metrics", "network_metrics_boot.csv"))
 
 
 #### models ####
@@ -25,10 +25,8 @@ m_links <- glmmTMB(links_per_sp ~ patch + (1|block),
 summary(m_links)
 plot(simulateResiduals(m_links))
 anova.links <- Anova(m_links, type = "III")
--0.10589/1.28683 * 100 # 8.228748% decrease
 confint(m_links)
--0.2243528/1.2030633 * 100 # 18.64846% decrease
-0.01256507/1.37058953 * 100 # 0.9167639% decrease
+
 
 
 # shannon diversity 
@@ -37,10 +35,8 @@ m_shannon <- glmmTMB(shannon ~ patch + (1|block),
 summary(m_shannon)
 plot(simulateResiduals(m_shannon))
 anova.shannon <- Anova(m_shannon, type = "III")
--0.8589/4.0814 * 100 # 21.04425% decrease
 confint(m_shannon)
--1.402504/3.689878 * 100 # 38.0095% decrease
--0.3153479/4.4729143 * 100 # 7.050166% decrease
+
 
 
 # d' higher level 
@@ -55,10 +51,7 @@ m.d_lower <- glmmTMB(mean_d_lower ~ patch + (1|block),
                      data = network_metrics_boot)
 summary(m.d_lower)
 anova.d_lower <- Anova(m.d_lower, type = "III")
-0.1106/0.5298 * 100 # 20.8758% decrease
 confint(m.d_lower)
-0.04577496/0.48390382 * 100 # 9.459516% decrease
-0.1755210/0.5756481 * 100 # 30.49102% decrease
 
 
 ##### tables #####
