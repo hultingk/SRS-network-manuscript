@@ -48,3 +48,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+*.Rproj
+*.pdf
+*.jpeg
+*.png
+*.DS_Store
